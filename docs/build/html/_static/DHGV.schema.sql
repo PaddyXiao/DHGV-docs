@@ -3,18 +3,18 @@ CREATE DATABASE DHGV;
 
 use DHGV;
 
-DROP TABLE IF EXISTS project;
-CREATE TABLE project(
-    projectID int not null,
-    projectName varchar(45),
-    projectOrganization varchar(45)
+DROP TABLE IF EXISTS variantSet;
+CREATE TABLE variantSet(
+    variantSetID int not null,
+    variantSetName varchar(45),
+    organization varchar(45)
 );
 
-DROP TABLE if EXISTS sample;
-CREATE TABLE sample(
-    sampleID int not null,
-    sampleName varchar(45),
-    projectID int not null,
+DROP TABLE if EXISTS callSet;
+CREATE TABLE callSet(
+    callSetID int not null,
+    callSetName varchar(45),
+    variantSetID int not null,
     ethnicity varchar(45),
     city varchar(45),
     province varchar(45),
@@ -37,15 +37,25 @@ CREATE TABLE variation(
     referenceBases varchar(255),
     alternateBases varchar(255),
     variantSetID varchar(45),
-    genotype varchar(45),
-    genotypeCount int,
-    genotypeFrequency double,
-    genotypeCallSetList text,
-    allele varchar(45),
-    alleleCount int,
-    alleleFrequency double,
-    alleleCallSetList text,
     totalCallSetCount int,
     totalReadDepth int,
     avgReadDepth double
+);
+
+DROP TABLE IF EXISTS allele;
+CREATE TABLE allele(
+    variationID varchar(45),
+    allele varchar(45),
+    alleleCount int,
+    alleleFrequency double,
+    alleleCallSetList text
+);
+
+DROP TABLE IF EXISTS genotype;
+CREATE TABLE genotype(
+    variantID varchar(45),
+    genotype varchar(45),
+    genotypeCount int,
+    genotypeFrequency double,
+    genotypeCallSetList text
 );

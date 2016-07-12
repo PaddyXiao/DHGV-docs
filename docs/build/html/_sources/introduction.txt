@@ -2,4 +2,4 @@
 
 介绍
 ===============
-    MVFD is Million variation frequency database.
+    DHGV(The database of human genetic variation).
