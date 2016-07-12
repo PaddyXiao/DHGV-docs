@@ -1,2 +1,2 @@
-# MVFD-docs
-Million variation frequency database
+# DHVG-docs
+The database of Human Genetic Variation.
