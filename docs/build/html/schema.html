@@ -55,7 +55,7 @@
 <div class="section" id="id2">
 <h2>数据库<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>DHGV（万人变异频率数据库）主要存储了项目信息、样本信息和变异信息。
+<div><p>DHGV（万人变异频率数据库）主要存储了项目信息、样本信息、变异信息、基因型频率和等位基因频率信息。
 实体关系图如下：</p>
 <div class="figure">
 <img alt="_images/DHGV.ER.png" src="_images/DHGV.ER.png" />
@@ -64,6 +64,376 @@
 </div>
 <div class="section" id="id3">
 <h2>数据表<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>sample表（包含样本信息、项目信息）</li>
+</ul>
+</div></blockquote>
+<div class="highlight-javascript"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;genotypeCount&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;基因型个数&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;95&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;染色体终止坐标&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;[1, 999999999]&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;10000004&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;variantNames&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;变异名称&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;rs570330528&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;totalCallSetCount&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;总共覆盖的样本数&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;2599&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;avgReadDepth&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;平均读段深度&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;double&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;totalReadDepth&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;总共读段深度&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;10396&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;alleleFrequency&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;等位基因频率&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;［0, 1]&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;double&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;0.03674&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;alleleCount&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;等位基因个数&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;191&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;genotypeCallSetList&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;覆盖的样本ID列表&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;too long to display&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;染色体起始坐标（0起始）&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;[0, 999999999]&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;10000003&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;genotypeFrequency&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;基因型频率&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;［0, 1]&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;double&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;0.03655&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;alleleCallSetList&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;覆盖的样本ID列表&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;too long to display&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;alternateBases&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;变异序列碱基&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;A,G&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;referenceName&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;染色体名称&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;[chr1..chr22, chrX, chrY]&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;chr1&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;allele&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;等位基因&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;variationID&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;变异ID&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;chr1-1000003&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;referenceBases&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;参考序列碱基&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;genotype&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;remark&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;基因型&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;allow&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;example&quot;</span><span class="o">:</span> <span class="s2">&quot;G|G&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;unit&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 </div>
 

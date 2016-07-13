@@ -5,7 +5,7 @@ use DHGV;
 
 DROP TABLE IF EXISTS variantSet;
 CREATE TABLE variantSet(
-    variantSetID int not null,
+    variantSetID varchar(45),
     variantSetName varchar(45),
     organization varchar(45)
 );

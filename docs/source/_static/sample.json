@@ -1,0 +1,152 @@
+{
+    "province": {
+        "index": "T", 
+        "remark": "", 
+        "description": "省/州", 
+        "level": "D7", 
+        "allow": "", 
+        "type": "string", 
+        "example": "Hubei", 
+        "unit": ""
+    }, 
+    "city": {
+        "index": "T", 
+        "remark": "", 
+        "description": "城市", 
+        "level": "D7", 
+        "allow": "", 
+        "type": "string", 
+        "example": "Wuhan", 
+        "unit": ""
+    }, 
+    "variantSetID": {
+        "index": "T", 
+        "remark": "", 
+        "description": "变异集ID", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "string", 
+        "example": "1000Genomes", 
+        "unit": ""
+    }, 
+    "organization": {
+        "index": "T", 
+        "remark": "", 
+        "description": "项目所在组织", 
+        "level": "D2", 
+        "allow": "", 
+        "type": "string", 
+        "example": "The 1000 Genomes Project", 
+        "unit": ""
+    }, 
+    "callSetID": {
+        "index": "T", 
+        "remark": "", 
+        "description": "样本ID", 
+        "level": "D7", 
+        "allow": "", 
+        "type": "int", 
+        "example": "21758", 
+        "unit": ""
+    }, 
+    "country": {
+        "index": "T", 
+        "remark": "", 
+        "description": "国家", 
+        "level": "D7", 
+        "allow": "", 
+        "type": "string", 
+        "example": "China", 
+        "unit": ""
+    }, 
+    "age": {
+        "index": "T", 
+        "remark": "", 
+        "description": "年龄", 
+        "level": "D7", 
+        "allow": "", 
+        "type": "int", 
+        "example": "26", 
+        "unit": ""
+    }, 
+    "seqDepth": {
+        "index": "T", 
+        "remark": "", 
+        "description": "测序深度", 
+        "level": "D7", 
+        "allow": "", 
+        "type": "int", 
+        "example": "30", 
+        "unit": "X"
+    }, 
+    "phenotype": {
+        "index": "F", 
+        "remark": "", 
+        "description": "表型", 
+        "level": "D7", 
+        "allow": "", 
+        "type": "string", 
+        "example": "N/A", 
+        "unit": ""
+    }, 
+    "isControl": {
+        "index": "T", 
+        "remark": "", 
+        "description": "是否为正常人", 
+        "level": "D7", 
+        "allow": "[T,F]", 
+        "type": "string", 
+        "example": "T", 
+        "unit": ""
+    }, 
+    "gender": {
+        "index": "T", 
+        "remark": "", 
+        "description": "性别", 
+        "level": "D7", 
+        "allow": "[male,female]", 
+        "type": "string", 
+        "example": "male", 
+        "unit": ""
+    }, 
+    "variantSetName": {
+        "index": "T", 
+        "remark": "", 
+        "description": "项目名称", 
+        "level": "D2", 
+        "allow": "", 
+        "type": "string", 
+        "example": "1000 Genomes Project", 
+        "unit": ""
+    }, 
+    "callSetName": {
+        "index": "T", 
+        "remark": "", 
+        "description": "样本名称", 
+        "level": "D7", 
+        "allow": "", 
+        "type": "string", 
+        "example": "NA06984", 
+        "unit": ""
+    }, 
+    "seqType": {
+        "index": "T", 
+        "remark": "", 
+        "description": "测序类型", 
+        "level": "D7", 
+        "allow": "[WGS,WES,CHIP-Seq]", 
+        "type": "string", 
+        "example": "WGS", 
+        "unit": ""
+    }, 
+    "ethnicity": {
+        "index": "T", 
+        "remark": "", 
+        "description": "种族", 
+        "level": "D7", 
+        "allow": "", 
+        "type": "string", 
+        "example": "CHB", 
+        "unit": ""
+    }
+}

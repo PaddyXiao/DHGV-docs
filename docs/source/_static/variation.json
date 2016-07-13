@@ -1,0 +1,182 @@
+{
+    "genotypeCount": {
+        "index": "F", 
+        "remark": "", 
+        "description": "基因型个数", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "int", 
+        "example": "95", 
+        "unit": ""
+    }, 
+    "end": {
+        "index": "T", 
+        "remark": "", 
+        "description": "染色体终止坐标", 
+        "level": "D5", 
+        "allow": "[1, 999999999]", 
+        "type": "int", 
+        "example": "10000004", 
+        "unit": ""
+    }, 
+    "variantNames": {
+        "index": "T", 
+        "remark": "", 
+        "description": "变异名称", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "string", 
+        "example": "rs570330528", 
+        "unit": ""
+    }, 
+    "totalCallSetCount": {
+        "index": "F", 
+        "remark": "", 
+        "description": "总共覆盖的样本数", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "int", 
+        "example": "2599", 
+        "unit": ""
+    }, 
+    "avgReadDepth": {
+        "index": "T", 
+        "remark": "", 
+        "description": "平均读段深度", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "double", 
+        "example": "4", 
+        "unit": ""
+    }, 
+    "totalReadDepth": {
+        "index": "T", 
+        "remark": "", 
+        "description": "总共读段深度", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "int", 
+        "example": "10396", 
+        "unit": ""
+    }, 
+    "alleleFrequency": {
+        "index": "F", 
+        "remark": "", 
+        "description": "等位基因频率", 
+        "level": "D5", 
+        "allow": "［0, 1]", 
+        "type": "double", 
+        "example": "0.03674", 
+        "unit": ""
+    }, 
+    "alleleCount": {
+        "index": "F", 
+        "remark": "", 
+        "description": "等位基因个数", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "int", 
+        "example": "191", 
+        "unit": ""
+    }, 
+    "genotypeCallSetList": {
+        "index": "T", 
+        "remark": "", 
+        "description": "覆盖的样本ID列表", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "string", 
+        "example": "too long to display", 
+        "unit": ""
+    }, 
+    "start": {
+        "index": "T", 
+        "remark": "", 
+        "description": "染色体起始坐标（0起始）", 
+        "level": "D5", 
+        "allow": "[0, 999999999]", 
+        "type": "int", 
+        "example": "10000003", 
+        "unit": ""
+    }, 
+    "genotypeFrequency": {
+        "index": "F", 
+        "remark": "", 
+        "description": "基因型频率", 
+        "level": "D5", 
+        "allow": "［0, 1]", 
+        "type": "double", 
+        "example": "0.03655", 
+        "unit": ""
+    }, 
+    "alleleCallSetList": {
+        "index": "T", 
+        "remark": "", 
+        "description": "覆盖的样本ID列表", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "string", 
+        "example": "too long to display", 
+        "unit": ""
+    }, 
+    "alternateBases": {
+        "index": "T", 
+        "remark": "", 
+        "description": "变异序列碱基", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "string", 
+        "example": "A,G", 
+        "unit": ""
+    }, 
+    "referenceName": {
+        "index": "T", 
+        "remark": "", 
+        "description": "染色体名称", 
+        "level": "D5", 
+        "allow": "[chr1..chr22, chrX, chrY]", 
+        "type": "string", 
+        "example": "chr1", 
+        "unit": ""
+    }, 
+    "allele": {
+        "index": "T", 
+        "remark": "", 
+        "description": "等位基因", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "string", 
+        "example": "G", 
+        "unit": ""
+    }, 
+    "variationID": {
+        "index": "T", 
+        "remark": "", 
+        "description": "变异ID", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "string", 
+        "example": "chr1-1000003", 
+        "unit": ""
+    }, 
+    "referenceBases": {
+        "index": "T", 
+        "remark": "", 
+        "description": "参考序列碱基", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "string", 
+        "example": "A", 
+        "unit": ""
+    }, 
+    "genotype": {
+        "index": "T", 
+        "remark": "", 
+        "description": "基因型", 
+        "level": "D5", 
+        "allow": "", 
+        "type": "string", 
+        "example": "G|G", 
+        "unit": ""
+    }
+}
