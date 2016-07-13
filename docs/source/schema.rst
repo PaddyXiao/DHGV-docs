@@ -20,8 +20,9 @@
     :language: javascript
     :linenos:  
     
-    - variation表（包含变异信息、基因型频率和等位基因频率信息）
     
+    - variation表（包含变异信息、基因型频率和等位基因频率信息）
+
 .. literalinclude:: _static/variation.json
     :language: javascript
     :linenos:
